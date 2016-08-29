@@ -4,9 +4,9 @@
 # http://github.com/tenstartups/backup-service-docker
 #
 
-FROM tenstartups/alpine:latest
+FROM alpine:3.3
 
-MAINTAINER Marc Lennox <marc.lennox@gmail.com>
+MAINTAINER Alexandre Lion <lion@alexandre.xyz>
 
 # Set environment variables.
 ENV \
@@ -16,22 +16,13 @@ ENV \
 
 # Install base packages.
 RUN \
-  echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
-  apk --update add build-base git libxml2-dev libxslt-dev mysql-client postgresql \
-               redis ruby ruby-bigdecimal ruby-bundler ruby-dev ruby-irb \
-               ruby-io-console ruby-json ruby-nokogiri sqlite tar zlib-dev && \
+  apk --update add build-base bash git libxml2-dev libxslt-dev mysql-client postgresql \
+               redis ruby ruby-rdoc ruby-nokogiri ruby-bigdecimal ruby-bundler ruby-dev ruby-irb \
+               ruby-io-console ruby-json ruby-nokogiri sqlite tar zlib-dev \
+               gnupg xtrabackup sudo && \
   rm -rf /var/cache/apk/*
 
-# Install ruby gems.
-RUN \
-  cd /tmp && \
-  git clone https://github.com/tenstartups/backup.git && \
-  cd backup && \
-  git checkout package_with_storage_id && \
-  gem build backup.gemspec && \
-  gem install backup --no-document && \
-  cd .. && \
-  rm -rf backup
+RUN /usr/bin/gem install backup
 
 # Define working directory.
 WORKDIR /home/backups
