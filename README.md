@@ -1,6 +1,6 @@
 # Docker Backup Image
 
-A minimal Docker image of the [backup Ruby gem project](https://github.com/backup/backup/).
+A minimal Docker image of the [backup Ruby gem](https://github.com/backup/backup/).
 
 
 ## Directory structure
@@ -10,7 +10,7 @@ A minimal Docker image of the [backup Ruby gem project](https://github.com/backu
 
 ## Usage
 
-`docker run -it --rm -v $(pwd)/config/:/etc/backups -v $(pwd)/data:/var/lib/backups -v $(pwd)/out:/home/backups lnalex/backup my_backup`
+`docker run -it --rm -v $(pwd)/config/:/etc/backups -v $(pwd)/data:/var/lib/backups -v $(pwd)/out:/home/backups lnalex/docker-backup my_backup`
 
 All your modules have to be in the `config/models`(e.g. `config/models/my_backup.rb`).
 
