@@ -1,7 +1,8 @@
 # Docker Backup Image
 
-A minimal Docker image of the [backup Ruby gem](https://github.com/backup/backup/).
+[![](https://images.microbadger.com/badges/image/lnalex/docker-backup.svg)](https://hub.docker.com/r/lnalex/docker-backup/) [![](https://images.microbadger.com/badges/version/lnalex/docker-backup.svg)](https://hub.docker.com/r/lnalex/docker-backup/)
 
+A minimal Docker image of the [backup Ruby gem](https://github.com/backup/backup/).
 
 ## Directory structure
     /etc/backups     => Configurations (BACKUP_CONFIG_DIR)
