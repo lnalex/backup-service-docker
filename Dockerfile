@@ -4,7 +4,7 @@
 # http://github.com/tenstartups/backup-service-docker
 #
 
-FROM alpine:3.3
+FROM alpine:edge
 
 MAINTAINER Alexandre Lion <lion@alexandre.xyz>
 
@@ -18,11 +18,11 @@ ENV \
 RUN \
   apk --update add build-base bash git libxml2-dev libxslt-dev mysql-client postgresql \
                redis ruby ruby-rdoc ruby-nokogiri ruby-bigdecimal ruby-bundler ruby-dev ruby-irb \
-               ruby-io-console ruby-json ruby-nokogiri sqlite tar zlib-dev \
-               gnupg xtrabackup sudo && \
+               ruby-io-console ruby-nokogiri sqlite tar zlib-dev \
+               gnupg mongodb-tools sudo && \
   rm -rf /var/cache/apk/*
 
-RUN /usr/bin/gem install backup
+RUN /usr/bin/gem install backup -v 5.0.0.beta.1
 
 # Define working directory.
 WORKDIR /home/backups
