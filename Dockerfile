@@ -22,7 +22,7 @@ RUN \
                gnupg xtrabackup sudo && \
   rm -rf /var/cache/apk/*
 
-RUN /usr/bin/gem install backup
+RUN /usr/bin/gem install backup -v 4.4.0
 
 # Define working directory.
 WORKDIR /home/backups
